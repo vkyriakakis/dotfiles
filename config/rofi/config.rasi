@@ -1,0 +1,8 @@
+configuration {
+	modi: "drun";
+	font: "Iosevka Custom 12";
+	bw: 3;
+	sidebar-mode: false;
+	color-normal: "#102753, #FEE8DA, #0e2f70, #FFFFFF, #102753";
+  	color-window: "#102753, #1D438C, #102753";
+}
