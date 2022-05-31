@@ -234,9 +234,8 @@ exec "flatpak run com.github.taiko2k.tauonmb"
 exec_always flameshot
 exec_always feh --bg-scale /home/vaskyr/wallpaper.jpg
 
-# Launch an htop + sensors at startup in the monitoring workspace
+# Launch an htop in the monitoring workspace
 exec --no-startup-id i3-msg 'exec $terminal --class Monitor -e htop;'
-exec --no-startup-id i3-msg 'exec $terminal --class Monitor -e "watch -n 1 -d sensors";'
 
 # i3ipc scripts
 exec python3.8 $HOME/.config/i3/sublpopup.py
