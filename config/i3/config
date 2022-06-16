@@ -180,10 +180,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Kill subl buy me popup
-#for_window [class="Sublime_text"]
-for_window [class="killme"] kill
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -229,10 +225,10 @@ exec_always $HOME/.config/polybar/launch.sh
 # Apps at startup
 exec discord
 exec firefox
-exec "flatpak run com.logseq.Logseq"
+# exec "flatpak run com.logseq.Logseq"
 exec "flatpak run com.github.taiko2k.tauonmb"
 exec_always flameshot
-exec_always feh --bg-scale /home/vaskyr/wallpaper.jpg
+exec_always feh --bg-scale /home/vaskyr/wallpaper.png
 
 # Launch an htop in the monitoring workspace
 exec --no-startup-id i3-msg 'exec $terminal --class Monitor -e htop;'
@@ -241,12 +237,15 @@ exec --no-startup-id i3-msg 'exec $terminal --class Monitor -e htop;'
 exec python3.8 $HOME/.config/i3/sublpopup.py
 
 # Borders
-client.focused #4164D5 #102753 #ffffff #102753 #4164D5
+client.focused #4164D5 #102753 #ffffff #8e8426 #8e8426
 client.urgent #B25935 #102753 #ffffff #102753 #B25935
 new_window pixel 4
 smart_borders on
 
 # Gaperinos
-gaps inner 10
+gaps inner 20
 gaps outer 0
-smart_gaps on
+# smart_gaps on
+
+# Focus on each new window created
+for_window [class = ".*"] focus
