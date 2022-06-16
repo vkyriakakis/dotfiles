@@ -7,7 +7,7 @@ if [[ -n $(nmcli con show --active "$1") ]];
 then
 	echo "VPN"
 else
-	echo "%{F#666}VPN%{F-}"
+	echo "%{F#e1e0dc}VPN%{F-}"
 fi
 
 # Then wait for vpn status change events
@@ -16,6 +16,6 @@ nmcli con monitor "$1" | while read -r line ; do
 	then
 		echo "VPN"
 	else
-		echo "%{F#666}VPN%{F-}"
+		echo "%{F#e1e0dc}VPN%{F-}"
 	fi
 done
