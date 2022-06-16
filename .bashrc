@@ -97,7 +97,7 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Neofetch alias for the ebin win
-alias neofetch='neofetch --ascii_colors 25 7 --colors 25 25 25 25'
+alias neofetch='neofetch --loop --crop_mode fit --w3m $HOME/wallpaper.png --colors 3 3 3 3'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
