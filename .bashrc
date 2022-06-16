@@ -130,3 +130,6 @@ alias dcheck='sudo smartctl -a /dev/sda1 | less'
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx   # remove the exec to remain logged in when your wm ends
 fi
+
+# Custom prompt
+export PS1="\[$(tput bold)\]\[\033[38;5;255m\]\u:\w\[$(tput bold)\]\[\033[38;5;3m\]>>>\[$(tput bold)\] \[$(tput sgr0)\]"
