@@ -2,7 +2,10 @@ configuration {
 	modi: "drun";
 	font: "Iosevka Custom 12";
 	bw: 3;
+	hide-scrollbar: true;
 	sidebar-mode: false;
-	color-normal: "#102753, #FEE8DA, #0e2f70, #FFFFFF, #102753";
-  	color-window: "#102753, #1D438C, #102753";
+	color-normal: "#12100e, #e1e0dc, #12100e, #2a2b22, #d2c446";
+  	color-window: "#12100e, #2a2b22, #d2c446";
+	me-select-entry: "";
+	me-accept-entry: [ MousePrimary, MouseSecondary, MouseDPrimary ];
 }
