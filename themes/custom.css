@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+:root {
+  --background: #25230f;
+  --light-background: #373415;
+  --lighter-background: #413d19;
+  --dark-background: #12100e;
+  --darker-background: #040401;
+  --silver: #e1e0dc;
+  --gold: #d2c446;
+
+  --ls-tag-text-opacity: 0.8;
+  --ls-tag-text-hover-opacity: 0.8;
+  --ls-page-text-size: 16px;
+  --ls-page-title-size: 36px;
+  --ls-font-family: "Fira Sans";
+  --ls-font-weight: 300;
+  --ls-font-letter-spacing: 0.002em;
+  --ls-font-line-height: 1.5;
+
+  --ls-border-radius-low: 3px;
+  --ls-border-radius-medium: 6px;
+}
+
+.dark-theme,
+html[data-theme="dark"] {
+  --ls-primary-background-color: var(--background);
+  --ls-secondary-background-color: var(--dark-background);
+  --ls-tertiary-background-color: var(--light-background);
+  --ls-quaternary-background-color: var(--light-background);
+  --ls-quinary-background-color: var(--darker-background);
+
+  --ls-active-primary-color: var(--silver);
+  --ls-active-secondary-color: var(--silver);
+
+  --ls-primary-text-color: var(--silver);
+  --ls-secondary-text-color: var(--gold);
+
+  --ls-search-background-color: var(--background);
+  --ls-border-color: var(--gold);
+  --ls-secondary-border-color: var(--ls-border-color);
+  --ls-menu-hover-color: var(--light-background);
+  --ls-table-tr-even-background-color: var(--light-background);
+
+  --ls-head-text-color: var(--silver);
+  --ls-title-text-color: var(--silver);
+
+  --ls-link-text-color: var(--silver);
+  --ls-link-text-hover-color: var(--gold);
+
+  --ls-link-ref-text-color: var(--silver);
+  --ls-link-ref-text-hover-color: var(--gold);
+  --ls-block-ref-link-text-color: var(--ls-border-color);
+
+  --ls-tag-text-color: var(--gold);
+  --ls-tag-text-hover-color: var(--gold);
+
+  --ls-block-bullet-border-color: var(--silver);
+  --ls-block-bullet-color: var(--silver);
+  --ls-block-highlight-color: var(--silver);
+  --ls-block-properties-background-color: var(--light-background);
+
+  --ls-page-checkbox-color: var(--gold);
+  --ls-page-checkbox-border-color: var(--gold);
+
+  --ls-page-blockquote-color: var(--silver);
+  --ls-page-blockquote-bg-color: var(--light-background);
+  --ls-page-blockquote-border-color: var(--gold);
+
+  --ls-page-inline-code-color: var(--gold);
+  --ls-page-inline-code-bg-color: var(--background);
+
+  --ls-scrollbar-background-color: var(--background);
+  --ls-scrollbar-foreground-color: var(--darker-background);
+  --ls-scrollbar-thumb-hover-color: var(--light-background);
+
+  --ls-icon-color: var(--gold);
+  --ls-search-icon-color: var(--gold);
+  --ls-a-chosen-bg: var(--light-background);
+  --ls-right-sidebar-code-bg-color: var(--light-background);
+  --ls-selection-background-color: var(--gold);
+  --ls-slide-background-color: var(--ls-primary-background-color);
+  --ls-guideline-color: var(--ls-border-color);
+}
+
+html,
+body {
+  font-weight: var(--ls-font-weight);
+  letter-spacing: var(--ls-font-letter-spacing);
+  line-height: var(--ls-font-line-height);
+  font-size: var(--ls-page-text-size);
+  background-color: var(--gold);
+}
+
+i {
+  color: var(--gold);
+}
+
+b {
+  color: var(--gold);
+}
+
+mark {
+  background-color: var(--gold);
+}
+
+.bg-orange-400 {
+  background-color: var(--gold);
+}
+
+.bg-green-600 {
+  background-color: var(--gold);
+}
+
+.bg-red-500 {
+  background-color: var(--gold);
+}
+
+.dark-theme .form-checkbox {
+  border: 1px solid var(--ls-page-checkbox-border-color) !important;
+  border-radius: var(--ls-border-radius-low) !important;
+}
+
+.external-link {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.external-link:hover {
+  color: var(--gold);
+}
+
+h1.title,
+.ls-block h1,
+.ls-block h2,
+.ls-block h3,
+.ls-block h4,
+.ls-block h5,
+.ls-block h6 {
+  font-weight: 400;
+}
+
+/* Priority tag styling */
+.priority {
+  color: var(--ls-tag-text-color);
+  opacity: 1 !important;
+}
+
+.priority:hover,
+a.tooltip-priority:hover {
+  color: var(--ls-tag-text-hover-color);
+  opacity: 0.5;
+}
+
+a.tooltip-priority {
+  color: var(--ls-tag-text-color);
+}
+
+.Tooltip__label {
+  background: var(--ls-quinary-background-color);
+}
+
+.Tooltip__label::after {
+  border-bottom-color: var(--ls-quinary-background-color);
+}
+
+.page-reference .bracket {
+  color: var(--ls-border-color);
+  opacity: 0.8;
+}
