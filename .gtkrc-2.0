@@ -2,10 +2,10 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/vaskyr/.gtkrc-2.0.mine"
-gtk-theme-name="Yaru-Deepblue-dark"
-gtk-icon-theme-name="Yaru-Deepblue"
+gtk-theme-name="oomox-ExArm"
+gtk-icon-theme-name="oomox-ExArm"
 gtk-font-name="Iosevka Custom 10"
-gtk-cursor-theme-name="Yaru-Deepblue"
+gtk-cursor-theme-name="Yaru-Blue"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
