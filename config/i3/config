@@ -44,6 +44,7 @@ bindsym $mod+bracketright exec --no-startup-id pactl set-sink-volume @DEFAULT_SI
 bindsym $mod+bracketleft exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym $mod+BackSpace exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym $mod+shift+BackSpace exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym $mod+Control+BackSpace exec --no-startup-id $HOME/bin/sinktoggle.sh && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -132,7 +133,7 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+p move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
@@ -140,6 +141,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Open rofi power menu
 bindsym $mod+Escape exec "rofi -show menu -width 20 -lines 5 \
                                -modi 'menu:rofi-power-menu --choices=suspend/lockscreen/logout/reboot/shutdown --no-symbols'"
+
+# Open rofi downloader 
+bindsym $mod+Shift+d exec --no-startup-id $HOME/bin/rofi-ytdl.sh
 
 # Make particular apps open in particular workspaces
 
