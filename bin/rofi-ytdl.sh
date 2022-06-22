@@ -37,13 +37,13 @@ root_dirs=("4chin"
 	       )
 
 # Script data
-options=("Video" "Song")
+options=("Video-URL" "Song-URL")
 
 # Go to the "home" directory
 cd $home_dir
 
 # Get user option using a rofi menu
-opt=$(printf "%s\n" ${options[@]} | rofi -p "DL by" -dmenu -format i)
+opt=$(printf "%s\n" ${options[@]} | rofi -p "DL by" -width 25 -lines 5 -dmenu -format i)
 
 # Video URL 
 if [ $opt = 0 ]; then
@@ -55,7 +55,7 @@ if [ $opt = 0 ]; then
 	done
 
 	# Make the user select the dl directory
-	video_dir=$(printf "%s\n" ${video_dirs[@]} | rofi -p "DL dir" -dmenu)
+	video_dir=$(printf "%s\n" ${video_dirs[@]} | rofi -p "DL dir" -width 25 -dmenu)
 
 	# If the user quits without giving an option, abort
 	if [ -z "$video_dir" ]; then
