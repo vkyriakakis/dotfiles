@@ -64,15 +64,33 @@ if [ $opt = 0 ]; then
 
 	# Download the URL in the clipboard and notify the user
 	url=$(xclip -o)
-	yt-dlp $video_dl_args $url -o "$home_dir/$video_dir/%(title)s.%(ext)s"
 
-	notify-send "Video downloaded!" $url
+	# Get the name of the file for the notification
+	vid_json=$(yt-dlp $url --dump-json)
+	vid_title=$(echo $vid_json | jq .title) 
+
+	output=$(yt-dlp $video_dl_args $url -o "$home_dir/$video_dir/%(title)s.%(ext)s" 2>&1)
+	if [ $? -eq 0 ]; then
+		notify-send "Download complete" "$vid_title"
+	else
+		error_msg=$(echo $output | grep -m 1 ERROR)
+		notify-send "Download error" "$error_msg"
+	fi
 
 # Song URL 
 elif [ $opt = 1 ]; then
 	# Just download the song to the specified music directory
 	url=$(xclip -o)
-	yt-dlp $music_dl_args $(xclip -o) -o "$home_dir/$music_dir/%(title)s.%(ext)s"
 
-	notify-send "Song downloaded!" $url
+	# Get the name of the file for the notification
+	vid_json=$(yt-dlp --dump-json $url)
+	vid_title=$(echo $vid_json | jq .title) 
+
+	output=$(yt-dlp $music_dl_args $url -o "$home_dir/$music_dir/%(title)s.%(ext)s" 2>&1)
+	if [ $? -eq 0 ]; then
+		notify-send "Download complete" "$vid_title"
+	else
+		error_msg=$(echo $output | grep -m 1 ERROR)
+		notify-send "Download error" "$error_msg"
+	fi
 fi
