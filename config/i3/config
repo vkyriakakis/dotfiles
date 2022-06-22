@@ -143,7 +143,7 @@ bindsym $mod+Escape exec "rofi -show menu -width 20 -lines 5 \
                                -modi 'menu:rofi-power-menu --choices=suspend/lockscreen/logout/reboot/shutdown --no-symbols'"
 
 # Open rofi downloader 
-bindsym $mod+Shift+d exec --no-startup-id $HOME/bin/rofi-ytdl.sh
+bindsym $mod+Shift+d exec --no-startup-id $HOME/bin/rofi-dl-menu.sh
 
 # Make particular apps open in particular workspaces
 
