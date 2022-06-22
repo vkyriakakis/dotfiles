@@ -237,8 +237,9 @@ exec --no-startup-id i3-msg 'exec $terminal --class Monitor -e htop;'
 exec python3.8 $HOME/.config/i3/sublpopup.py
 
 # Borders
-client.focused #4164D5 #102753 #ffffff #8e8426 #8e8426
-client.urgent #B25935 #102753 #ffffff #102753 #B25935
+client.focused #8e8426 #8e8426 #ffffff #8e8426 #8e8426
+client.urgent #B25935 #8e8426 #ffffff #8e8426 #B25935
+client.background #d2c446
 new_window pixel 4
 smart_borders on
 
