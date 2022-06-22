@@ -3,8 +3,8 @@
 # User config
 home_dir=$HOME
 music_dir="Music"
-music_dl_args="--audio-quality 10 --extract-audio --embed-metadata --embed-thumbnail"
-video_dl_args="--audio-quality 10 --embed-subs --embed-metadata --embed-thumbnail"
+music_dl_args="--audio-quality 10 --extract-audio --embed-metadata --embed-thumbnail --no-playlist"
+video_dl_args="--audio-quality 10 --embed-subs --embed-metadata --embed-thumbnail --no-playlist"
 root_dirs=("4chin" 
 	        "americans" 
 	        "amogus" 
@@ -62,11 +62,17 @@ if [ $opt = 0 ]; then
 		exit 0
 	fi
 
-	# Download the URL in the clipboard
-	yt-dlp $video_dl_args $(xclip -o) -o "$home_dir/$video_dir/[%(id)s]%(title)s.%(ext)s"
+	# Download the URL in the clipboard and notify the user
+	url=$(xclip -o)
+	yt-dlp $video_dl_args $url -o "$home_dir/$video_dir/%(title)s.%(ext)s"
+
+	notify-send "Video downloaded!" $url
 
 # Song URL 
 elif [ $opt = 1 ]; then
 	# Just download the song to the specified music directory
+	url=$(xclip -o)
 	yt-dlp $music_dl_args $(xclip -o) -o "$home_dir/$music_dir/%(title)s.%(ext)s"
+
+	notify-send "Song downloaded!" $url
 fi
