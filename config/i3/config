@@ -253,4 +253,8 @@ gaps outer 0
 # smart_gaps on
 
 # Focus on each new window created
-for_window [class = ".*"] focus
+for_window [class = ".*"] focus 
+
+# Move the calendar window to the center and close
+# it after it loses focus
+for_window [class = "Calendar"] floating enable
