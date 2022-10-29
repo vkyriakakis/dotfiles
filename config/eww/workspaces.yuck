@@ -1,0 +1,49 @@
+(defwidget workspaces []
+  (box :class "workspaces" 
+       :orientation "horizontal"
+       :halign "center"
+       :spacing 20
+       :space-evenly false
+
+    (ws_select :icon "" :ws "1" :ws_visible ws1_visible :ws_urgent ws1_urgent)
+    (ws_select :icon "" :ws "2" :ws_visible ws2_visible :ws_urgent ws2_urgent)
+    (ws_select :icon "" :ws "3" :ws_visible ws3_visible :ws_urgent ws3_urgent)
+    (ws_select :icon "" :ws "7" :ws_visible ws7_visible :ws_urgent ws7_urgent)
+    (ws_select :icon "" :ws "8" :ws_visible ws8_visible :ws_urgent ws8_urgent)
+    (ws_select :icon "" :ws "9" :ws_visible ws9_visible :ws_urgent ws9_urgent)
+    (ws_select :icon "" :ws "10" :ws_visible ws10_visible :ws_urgent ws10_urgent)
+  )
+)
+
+(defvar ws1_visible false)
+(defvar ws2_visible false)
+(defvar ws3_visible false)
+(defvar ws4_visible false)
+(defvar ws5_visible false)
+(defvar ws6_visible false)
+(defvar ws7_visible false)
+(defvar ws8_visible false)
+(defvar ws9_visible false)
+(defvar ws10_visible false)
+
+(defvar ws1_urgent false)
+(defvar ws2_urgent false)
+(defvar ws3_urgent false)
+(defvar ws4_urgent false)
+(defvar ws5_urgent false)
+(defvar ws6_urgent false)
+(defvar ws7_urgent false)
+(defvar ws8_urgent false)
+(defvar ws9_urgent false)
+(defvar ws10_urgent false)
+
+(defvar focused "empty")
+
+(defwidget ws_select [icon ws ws_visible ws_urgent]
+  (eventbox :class {focused == ws ? "focused" : "unfocused"}
+            :onclick "i3-msg workspace ${ws}"
+            :cursor "pointer"
+            :visible ws_visible
+    "${icon}"
+  ) 
+)

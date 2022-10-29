@@ -1,0 +1,90 @@
+(defwidget music []
+  (eventbox :onhover "eww update status_revealed=true"
+            :onhoverlost "eww update status_revealed=false"
+    (box :orientation "horizontal"
+         :spacing 15
+         :space-evenly "false"
+         :halign "end"
+      (trackstatus)
+      (loop)
+      (shuffle)
+      (play)
+      (pause)
+      (prev)
+      (next)
+    )
+  )
+)
+
+(defwidget play []
+  (eventbox :onclick "playerctl --player=tauon play"
+            :cursor "pointer"
+            :class "musicbutton"
+    ""
+  )
+)
+
+(defwidget pause []
+  (eventbox :onclick "playerctl --player=tauon pause"
+            :cursor "pointer"
+            :class "musicbutton"
+    ""
+  )
+)
+
+(defwidget next []
+   (eventbox :onclick "playerctl --player=tauon next"
+            :cursor "pointer"
+            :class "musicbutton"
+    ""
+  )
+)
+
+(defwidget prev []
+   (eventbox :onclick "playerctl --player=tauon previous"
+            :cursor "pointer"
+            :class "musicbutton"
+    ""
+  )
+)
+
+(deflisten shuffle_status
+  `playerctl --player=tauon -F shuffle`
+)
+
+(defwidget shuffle []
+  (eventbox :onclick "scripts/shuffletoggle.sh"
+            :cursor "pointer"
+            :class "musicbutton"
+    (label
+      :markup {shuffle_status == "Off" ? "" : "<span foreground=\"#d2c446\"></span>"}
+    )
+  )
+)
+
+(deflisten loop_status
+  `playerctl --player=tauon -F loop`
+)
+
+(defwidget loop []
+  (eventbox :onclick "scripts/looptoggle.sh"
+            :cursor "pointer"
+            :class "musicbutton"
+    (label
+      :markup {loop_status == "None" ? "" : "<span foreground=\"#d2c446\"></span>"}
+    )
+  )
+)
+
+(deflisten track
+  `playerctl --player=tauon -F metadata --format '{{trunc(artist, 20)}} - {{trunc(title, 20)}}'`
+)
+
+(defvar status_revealed false)
+
+(defwidget trackstatus []
+ (revealer :transition "slideright"
+           :reveal status_revealed
+  (label :markup "<span foreground=\"#d2c446\">${track}</span>")
+ )
+)

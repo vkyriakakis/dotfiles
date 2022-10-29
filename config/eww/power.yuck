@@ -1,0 +1,40 @@
+(defwidget power []
+  (eventbox :onclick "eww open powermenu-closer && eww open powermenu"
+            :cursor "pointer"
+    (label :class "indicator"
+      :markup "<span foreground=\"#d2c446\" font=\"Font Awesome\"></span>"
+    )
+  )
+)
+
+(defwidget suspend []
+  (eventbox :onclick "scripts/powermenu.sh suspend"
+            :cursor "pointer"
+            :class "powerbutton"
+    "Suspend"
+  )
+)
+
+(defwidget logout []
+  (eventbox :onclick "scripts/powermenu.sh logout"
+            :cursor "pointer"
+            :class "powerbutton"
+    "Log out"
+  )
+)
+
+(defwidget reboot []
+  (eventbox :onclick "scripts/powermenu.sh reboot"
+            :cursor "pointer"
+            :class "powerbutton"
+    "Reboot"
+  )
+)
+
+(defwidget shutdown []
+  (eventbox :onclick "scripts/powermenu.sh shutdown"
+            :cursor "pointer"
+            :class "powerbutton"
+    "Shutdown"
+  )
+)

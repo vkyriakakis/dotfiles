@@ -1,0 +1,72 @@
+(defwidget control []
+  (box :orientation "horizontal"
+       :halign "start"
+       :spacing 20
+       :space-evenly false
+    (power)
+    (vpn)
+    (sound)
+  )
+)
+
+(deflisten vpnstatus
+  `scripts/vpnstatus.sh 'VPN Πανεπ. Θεσσαλίας'`
+)
+
+(defwidget vpn []
+  (eventbox :onclick "scripts/vpntoggle.sh 'VPN Πανεπ. Θεσσαλίας'"
+            :cursor "pointer"
+    (label :class "indicator"
+      :markup "${vpnstatus}"
+    )
+  )  
+)
+
+(defwidget sound []
+  (box :spacing 20
+       :space-evenly false
+    (mic)
+    (sinks)
+    (volume)
+  )
+)
+
+(deflisten micstatus
+  `scripts/micstatus.sh`
+)
+
+(defwidget mic []
+  (eventbox :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+            :cursor "pointer"
+    (label :class "indicator"
+      :markup "${micstatus}"
+    )
+  )
+)
+
+(deflisten sinkstatus
+  `scripts/sinkstatus.sh`
+)
+
+(defwidget sinks []
+  (eventbox :onclick "scripts/sinktoggle.sh"
+            :cursor "pointer"
+    (label :class "indicator"
+      :markup "${sinkstatus}"
+    )
+  )
+)
+
+(deflisten volumestatus
+  `scripts/volumestatus.sh`
+)
+
+(defwidget volume []
+  (eventbox :onclick "scripts/volumemute.sh"
+            :onscroll "scripts/volumechange.sh {}"
+            :cursor "pointer"
+    (label
+      :markup "${volumestatus}"
+    )
+  )
+)

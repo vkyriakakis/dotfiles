@@ -4,7 +4,7 @@ from i3ipc.aio import Connection
 
 async def on_new_window(i3, e):
     print(f'a new window opened: {e.container.window_class} - {e.container.geometry.width} {e.container.geometry.height}')
-    if e.container.window_class == "Sublime_text" and e.container.geometry.width == 596 and e.container.geometry.height == 185:
+    if e.container.window_class == "Sublime_text" and e.container.geometry.width == 620 and e.container.geometry.height == 190:
         await e.container.command('kill')
 
 async def main():

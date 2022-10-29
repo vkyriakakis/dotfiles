@@ -1,0 +1,92 @@
+(include "info.yuck")
+(include "power.yuck")
+(include "music.yuck")
+(include "control.yuck")
+(include "workspaces.yuck")
+
+(defwindow infobar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "35px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  (centerbox  :class "bar"
+              :orientation "h"
+    (systeminfo)
+    "${time}"
+    (worldinfo)
+  )
+)
+
+(defwindow funcbar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "35px"
+                      :anchor "bottom center")
+  :reserve (struts :side "bottom" :distance "4%")
+  (centerbox  :class "bar"
+              :orientation "h"
+    (control)
+    (workspaces)
+    (music)
+  )
+)
+
+(defwidget closer [window]
+  (eventbox :onclick "eww close ${window} && eww close ${window}-closer"
+  )
+)
+
+(defwindow powermenu
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "-4%"
+                      :width "13%"
+                      :height "200px"
+                      :anchor "bottom left")
+  :windowtype "normal"
+  :wm-ignore: "true"
+  (box :orientation "vertical"
+       :class "powermenu"
+    (shutdown)
+    (reboot)
+    (logout)
+    (suspend)
+  )
+)
+ 
+(defwindow powermenu-closer
+  :monitor 0
+  :geometry (geometry :width "100%" :height "100%")
+  :focusable false
+  :windowtype "normal"
+  (closer :window "powermenu")
+)
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "4%"
+                      :width "20%"
+                      :height "160px"
+                      :anchor "top right")
+  :windowtype "normal"
+  :wm-ignore: "true"
+  (calendar :show-heading true
+            :show-day-names true
+  )
+)
+
+(defwindow calendar-closer
+  :monitor 0
+  :geometry (geometry :width "100%" :height "100%")
+  :focusable false
+  :windowtype "normal"
+  (closer :window "calendar")
+)

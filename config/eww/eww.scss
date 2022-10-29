@@ -1,0 +1,73 @@
+* {
+  all: unset;
+}
+
+//Global Styles
+.bar {
+  background-color: #12100e;
+  color: #e1e0dc;
+  padding: 10px;
+  font-size: 14px
+}
+
+calendar {
+  color: #e1e0dc;
+  background-color: #12100e;
+  border: 1px solid #d2c446;
+}
+
+calendar:selected {
+  color: #d2c446;
+  background-color: #2a2b22;
+  font-weight: bold;
+}
+
+calendar.header {
+  color: #d2c446;
+  font-weight: bold;
+}
+
+calendar.highlight {
+  color: #d2c446;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: #12100e;
+}
+
+.powermenu {
+  background-color: #12100e;
+  padding: 2px;
+  border: 2px solid #d2c446;
+}
+
+.powerbutton:hover {
+  background-color: #2a2b22;
+  color: #d2c446;
+}
+
+.workspaces {
+  font: 16px "Font Awesome"
+}
+
+.indicator {
+  font: 16px "Font Awesome"
+}
+
+.musicbutton {
+  font: 13px "Font Awesome"
+}
+
+.focused {
+  background-color: #2a2b22;
+  color: #d2c446;
+}
+
+.urgent {
+  background-color: #B25935;
+}
+
+.debug {
+  background-color: #FFFFFF;
+}

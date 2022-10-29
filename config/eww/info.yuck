@@ -1,0 +1,82 @@
+(defwidget placeholder []
+  (box)
+)
+
+(defwidget worldinfo []
+  (box :orientation "horizontal"
+       :halign "end"
+       :spacing 20
+       :space-evenly false
+    (datetime)
+  )
+)
+
+(defwidget datetime []
+  (eventbox :onclick "eww open calendar-closer && eww open calendar"
+            :cursor "pointer"
+    (metric :icon ""
+            :text "${date}"
+    )
+  )
+)
+
+(defpoll time :interval "1s"
+  `date +%H:%M:%S`
+)
+
+(defpoll date :interval "1s"
+  `date +"%a %d %b"`
+)
+
+(defwidget systeminfo []
+  (box :orientation "horizontal"
+       :halign "start"
+       :spacing 20
+       :space-evenly false
+    (cpu)
+    (temp)
+    (ram)
+    (updates)
+  )
+)
+
+(defpoll updates :interval "1m"
+  `/usr/lib/update-notifier/apt-check --human-readable | head -n1 | cut -d " " -f1`
+)
+
+(defwidget updates []
+  (eventbox :onclick "sakura --class Update -e 'scripts/upgrade.sh'"
+            :cursor "pointer"
+    (metric :icon ""
+            :text "${updates} updates"
+    )
+  )
+)
+
+(defwidget cpu []
+    (metric :icon "" 
+            :text "${round(EWW_CPU.avg, 0)}%"
+    )
+)
+
+(defwidget ram []
+  (metric :icon "" 
+          :text "${round(EWW_RAM.used_mem_perc, 0)}%"
+  )
+)
+
+(defpoll temp :interval "10s"
+  `sensors | grep Package | awk '{print $4}' | cut -c 2-3` 
+)
+
+(defwidget temp []
+  (metric :icon "" 
+          :text "${temp}°C"
+  )
+)
+
+(defwidget metric [icon text]
+  (label 
+    :markup "<span foreground=\"#e1e0dc\" font=\"Font Awesome\">${icon}</span> <span foreground=\"#d2c446\">${text}</span>"
+  )
+)

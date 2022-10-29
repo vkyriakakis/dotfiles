@@ -89,6 +89,10 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+# Enable tabbed view by default
+workspace_layout tabbed
+bindsym $mod+Tab focus right
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -170,6 +174,7 @@ assign [class="Monitor"] $ws7
 assign [class="Steam"] $ws8
 assign [title="Steam"] $ws8
 assign [class="Transmission-gtk"] $ws8
+assign [class="Update"] $ws8
 
 # Note taking
 assign [class="Logseq"] $ws9
@@ -214,6 +219,9 @@ bindsym $mod+r mode "resize"
 # Keybind for flameshot
 bindsym Print exec flameshot gui
 
+# Keybind to open my calendar in a terminal
+bindsym $mod+q "exec $terminal --class Calendar --rows 10 --columns 30 -e ./bin/calendar.sh;"
+
 #Keybind to open the config file in sublime-text
 bindsym $mod+c exec "subl ~/.config/i3/config"
 
@@ -223,19 +231,18 @@ bindsym $mod+c exec "subl ~/.config/i3/config"
 #        status_command i3status
 #}
 
-# To launch le polybar
-exec_always $HOME/.config/polybar/launch.sh
+# Launch EWW!
+exec "eww open-many infobar funcbar && $HOME/.config/eww/scripts/wsmonitor.sh"
 
 # Apps at startup
-exec discord
 exec firefox
 # exec "flatpak run com.logseq.Logseq"
-exec "flatpak run com.github.taiko2k.tauonmb"
+# exec "flatpak run com.github.taiko2k.tauonmb"
 exec_always flameshot
 exec_always feh --bg-scale /home/vaskyr/wallpaper.png
 
 # Launch an htop in the monitoring workspace
-exec --no-startup-id i3-msg 'exec $terminal --class Monitor -e htop;'
+# exec --no-startup-id i3-msg 'exec $terminal --class Monitor -e htop;'
 
 # i3ipc scripts
 exec python3.8 $HOME/.config/i3/sublpopup.py
@@ -258,3 +265,10 @@ for_window [class = ".*"] focus
 # Move the calendar window to the center and close
 # it after it loses focus
 for_window [class = "Calendar"] floating enable
+
+# Kill mozilla microphone indicator
+exec picom
+
+# Make nautilus always float and put it on the bottom left of the screen
+for_window [class = "Nemo"] floating enable
+for_window [class = "Viewnior"] floating enable
